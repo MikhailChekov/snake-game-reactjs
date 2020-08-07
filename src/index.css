@@ -1,13 +1,63 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body{
+	background: #51DA83;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.center{
+  text-align: center;
+  padding-top: 100px;
+}
+
+.gameField{
+  position: relative;
+  margin:0 auto;
+  width: 400px;
+  height: 400px;
+  position: relative;
+  background: white;
+  border: 4px solid rgb(14, 87, 38);
+  border-radius: 3px;
+}
+
+.points{
+	color: red;
+}
+
+.pointsText{
+  margin-top: 15px;
+	font-size: 20px;
+}
+
+.snakeBody{
+  position: absolute;
+  width: 4.6%;
+  height: 4.6%;
+  background-color: #000;
+  border: 1px solid yellow;
+  z-index: 2;
+}
+
+.fruit{
+  position: absolute;
+  width: 4.7%;
+  height: 4.7%;
+  z-index: 1;
+  background-image: url(./img/fruit.jpg);
+}
+
+.newGame{
+  width: 140px;
+  height: 40px;
+  text-align: center;
+  margin: 10px auto;
+  cursor: pointer;
+  -moz-border-radius:21px;
+  -webkit-border-radius:21px;
+  border-radius:21px;
+  /*GRADIENT*/
+  background: -moz-linear-gradient(top, #b4ddb4 0%, #83c783 17%, #52b152 33%, #008a00 59%, #005700 83%, #002400 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b4ddb4), color-stop(17%,#83c783), color-stop(33%,#52b152), color-stop(59%,#008a00), color-stop(83%,#005700), color-stop(100%,#002400)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #b4ddb4 0%,#83c783 17%,#52b152 33%,#008a00 59%,#005700 83%,#002400 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #b4ddb4 0%,#83c783 17%,#52b152 33%,#008a00 59%,#005700 83%,#002400 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #b4ddb4 0%,#83c783 17%,#52b152 33%,#008a00 59%,#005700 83%,#002400 100%); /* IE10+ */
+  background: linear-gradient(to bottom, #b4ddb4 0%,#83c783 17%,#52b152 33%,#008a00 59%,#005700 83%,#002400 100%);
 }

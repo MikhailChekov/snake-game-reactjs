@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Fruit = (props) => {
+const Fruit = ({fruitBody}) => {
 
   const style = {
-    left: `${props.fruitBody[0]}%`,
-    top: `${props.fruitBody[1]}%`
+    left: `${fruitBody[0]}%`,
+    top: `${fruitBody[1]}%`
   }
 
   return (

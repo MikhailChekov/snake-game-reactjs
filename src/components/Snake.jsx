@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Snake = (props) => {
+const Snake = ({snakeBody}) => {
   return (
     <div>
-      {props.snakeBody.map((item, i) => {
+      {snakeBody.map((item, i) => {
         const style = {
           left: `${item[0]}%`,
           top: `${item[1]}%`

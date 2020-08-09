@@ -3,6 +3,7 @@ import Snake from './components/Snake';
 import Fruit from './components/Fruit';
 import Results from './components/Results';
 import SaveResultsForm from './components/SaveResultsForm';
+import getResultsList from './components/getResultsList';
 
 import {
     UP,
@@ -13,8 +14,6 @@ import {
     FRUIT_START,
     SPEED_START,
     POINTS_START,
-    DEFAULT_PLAYERS,
-
 } from './constants.js';
 
 const initialState = {
@@ -25,10 +24,10 @@ const initialState = {
   isGameOn: false,
   showForm: false,
   inputTextValue: '',
+  //getting results list from local storage;
+  resultsList: getResultsList(),
 }
-
-const resultsList = DEFAULT_PLAYERS;
-
+  
 class SnakeApp extends Component {
 
   constructor(){
@@ -161,12 +160,22 @@ class SnakeApp extends Component {
     let y =  Math.floor((Math.random()*(max-min+1)+min)/2)*5;
     return [x,y]
   }
-  // To do
+
+  handleInputOnChange = ({target: {value}}) => {
+    this.setState({inputTextValue: value});
+  }
+
   gameOver = () => { 
     clearInterval(this.intervalID);
     this.speed = SPEED_START;
     this.setState({isSaveResultsOpen: true, isGameOn: false});
-    // this.setState(initialState);
+  }
+
+  saveResults = () => {
+    const {inputTextValue, points, resultsList } = this.state;
+    resultsList.push({player: inputTextValue, score: points });
+    localStorage.setItem('playersList', JSON.stringify(resultsList));
+    this.setState(initialState);
   }
 
   startNewGame = () => {
@@ -177,22 +186,14 @@ class SnakeApp extends Component {
     });
   }
 
-  handleInputOnChange = ({target: {value}}) => {
-    this.setState({inputTextValue: value});
-  }
-  // To do - initial state + save to resultsList
-  saveResults = () => {
-    const {inputTextValue, points} = this.state;
-    resultsList.push({player: inputTextValue, score: points });
-  }
-
   render() {
-    const { snakeBody, points,  fruit, isGameOn, inputTextValue, isSaveResultsOpen} = this.state;
+    const { snakeBody, points,  fruit, isGameOn, inputTextValue, isSaveResultsOpen, resultsList} = this.state;
+    const sortedResults = resultsList.sort((a,b) => b.score - a.score);
     return (
       <>
       {   
           // Show game part
-          !isSaveResultsOpen
+        !isSaveResultsOpen
           ?
             <div className="center">
               <h1 className="title">Змейка на React Js</h1>
@@ -200,13 +201,15 @@ class SnakeApp extends Component {
                 <Snake snakeBody={snakeBody}/> 
                 <Fruit fruitBody={fruit}/>
               </div>
-              {!isGameOn && <div className="pointsText">Вы набрали:  <span className="points">{points}</span></div>}
+              {isGameOn && <div className="pointsText">Вы набрали:  <span className="points">{points}</span></div>}
+              {isGameOn && <div className="pointsText">Ваша скорость:  <span className="points">{points * 7}</span> Км/ч</div>}
               {!isGameOn && <button className="newGame" onClick={this.startNewGame}>New game</button>}
-              {!isGameOn && <Results results={resultsList} /> }
+              {/*TO DO*/}
+              {!isGameOn && <Results results={sortedResults} /> }
             </div>
           :
           // Or show save results form
-           <SaveResultsForm points={points} onChange={this.handleInputOnChange} onSubmit={this.saveResults} value={inputTextValue} />
+           <SaveResultsForm points={points} onChange={this.handleInputOnChange} onClick={this.saveResults} value={inputTextValue} />
       }
       </>
     );

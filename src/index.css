@@ -81,9 +81,45 @@ body{
   border: 3px solid rgb(14, 87, 38);
 }
 
-.saveResultForm{
-  margin: 0 auto;
-  width: 150px,
+.saveResult {
+  text-align: center;
+  border: 3px solid black;
+  margin: 200px auto;
+  width: 300px;
+  font-family: 'Lobster', cursive;
+  font-size: 30px;
+  color: white;
+  background-image: url(./img/firework-min.jpg);
+}
+.saveResult_congrats{
+  margin: 15px;
+}
+
+.saveResult_form{
+  margin: 15px;
+}
+
+.saveResult_form input{
+  font-size: 20px;
+}
+
+.saveResult_form button{
+  margin-top: 10px;
+  background-color:#606cf0;
+	border-radius:28px;
+	border:1px solid #2eb33c;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:11px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+
+.saveResult_form button:hover {
+	background-color:#584099;
 }
 
 .newGame{

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const SaveResultsForm = ({onChange, onSubmit, value, points}) => {
+const SaveResultsForm = ({onChange, onClick, value, points}) => {
 
     SaveResultsForm.propTypes = {
         onChange: PropTypes.func,
@@ -19,14 +19,16 @@ const SaveResultsForm = ({onChange, onSubmit, value, points}) => {
     }
 
     return(
-        <div className="saveResultForm">  
-            <div>Поздравляем, ваш результат - {points} </div>
-            <form>
-                <label>
-                    Введите ваше имя:
-                    <input type="text" onChange={onChange} value={value}/>
-                </label>
-                <button onSubmit={onSubmit}>Сохранить</button>
+        <div className="saveResult">  
+            <div className="saveResult_congrats">Поздравляем, ваш результат - {points} </div>
+            <form className="saveResult_form">
+                <div>
+                    <label for="playerName">
+                        Введите ваше имя:    
+                    </label>
+                    <input id="playerName" type="text" onChange={onChange} value={value}/>
+                </div>
+                <button onClick={onClick}>Сохранить резьтат</button>
                 <button onClick={document.location.reload}>Отмена</button>
             </form>
         </div>

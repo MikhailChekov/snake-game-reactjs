@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Results = ({results}) => {
+const Results = ({ results }) => {
    Results.propTypes = {
-       results: PropTypes.array,
+       results: PropTypes.array.isRequired,
    }
    Results.defaultProps = {
        results: [],

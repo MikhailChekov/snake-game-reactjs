@@ -1,3 +1,5 @@
+//getting results list from local storage
+
 import { DEFAULT_PLAYERS } from '../constants';
 
 const getResultsList = () => {

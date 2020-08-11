@@ -1,6 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Snake = ({snakeBody}) => {
+const Snake = ({ snakeBody }) => {
+  Snake.propTypes = {
+    snakeBody: PropTypes.array.isRequired,
+  }
+  Snake.defaultProps = {
+    snakeBody: [],
+  }
+
   return (
     <div>
       {snakeBody.map((item, i) => {

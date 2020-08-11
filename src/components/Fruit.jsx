@@ -1,6 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Fruit = ({fruitBody}) => {
+const Fruit = ({ fruitBody }) => {
+  Fruit.propTypes = {
+    fruitBody: PropTypes.array.isRequired,
+  }
+  Fruit.defaultProps = {
+    fruitBody: [],
+  }
 
   const style = {
     left: `${fruitBody[0]}%`,

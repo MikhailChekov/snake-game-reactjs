@@ -24,11 +24,7 @@ const UP = 'UP',
             score: 5,
         },
       ];
-          
-
-
-
-
+      
 export {
     UP,
     DOWN ,

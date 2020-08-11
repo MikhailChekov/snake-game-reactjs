@@ -3,6 +3,7 @@ import Snake from './components/Snake';
 import Fruit from './components/Fruit';
 import Results from './components/Results';
 import SaveResultsForm from './components/SaveResultsForm';
+import PlayData from './components/PlayData';
 import getResultsList from './components/getResultsList';
 
 import {
@@ -24,7 +25,7 @@ const initialState = {
   isGameOn: false,
   showForm: false,
   inputTextValue: '',
-  //getting results list from local storage;
+  //getting results list from local storage
   resultsList: getResultsList(),
 }
   
@@ -43,8 +44,9 @@ class SnakeApp extends Component {
 
   componentDidUpdate() {
     if(this.state.isGameOn){
+      let sign = true;
       this.isCrushToBorder();
-      this.isCrushToSnake();
+      this.isCrushToSnake(sign);
       this.isAteFruit();
     }
   }
@@ -109,15 +111,26 @@ class SnakeApp extends Component {
     }
   }
 
-  isCrushToSnake = () => {
+  isCrushToSnake = (sign, fruit) => {
     let snake = [...this.state.snakeBody];
     let head = snake[snake.length - 1];
-    snake.pop();
-    snake.forEach(dot => {
-      if (head[0] === dot[0] && head[1] === dot[1]) {
-        this.gameOver();
-      }
-    })
+    if(sign){
+      snake.pop();
+      snake.forEach(item => {
+        if (head[0] === item[0] && head[1] === item[1]) {
+          this.gameOver();
+        }
+      })
+    }else{
+      let fruitOnSnake = false;
+      snake.forEach(item => {
+        if (fruit[0] === item[0] && fruit[1] === item[1]) {
+          fruitOnSnake = true;
+        }
+      })
+      return fruitOnSnake;
+    }
+   
   }
 
   isAteFruit = () => {
@@ -127,7 +140,7 @@ class SnakeApp extends Component {
     if (head[0] === fruit[0] && head[1] === fruit[1]) {
       this.setState(({points}) =>({
         points: ++points,
-        fruit: this.getRandomCoordinates(),
+        fruit: this.getNewFruitPosition(),
       }))
       this.increaseSnakeSize();
       this.increaseSpeed();
@@ -153,12 +166,17 @@ class SnakeApp extends Component {
     }
   }
 
-  getRandomCoordinates = () => {
+  getNewFruitPosition = () => {
     let min = 1;
     let max = 20;
     let x = Math.floor((Math.random()*(max-min+1)+min)/2)*5;
     let y =  Math.floor((Math.random()*(max-min+1)+min)/2)*5;
-    return [x,y]
+    let fruit = [x, y];
+    if(this.isCrushToSnake(false, fruit)){
+      return this.getNewFruitPosition(); 
+    }else{
+      return fruit;
+    }
   }
 
   handleInputOnChange = ({target: {value}}) => {
@@ -172,7 +190,7 @@ class SnakeApp extends Component {
   }
 
   saveResults = () => {
-    const {inputTextValue, points, resultsList } = this.state;
+    const { inputTextValue, points, resultsList } = this.state;
     resultsList.push({player: inputTextValue, score: points });
     localStorage.setItem('playersList', JSON.stringify(resultsList));
     this.setState(initialState);
@@ -188,7 +206,8 @@ class SnakeApp extends Component {
 
   render() {
     const { snakeBody, points,  fruit, isGameOn, inputTextValue, isSaveResultsOpen, resultsList} = this.state;
-    const sortedResults = resultsList.sort((a,b) => b.score - a.score);
+    const sortedResults = (resultsList.sort((a,b) => b.score - a.score)).splice(0,15);
+    const canShowResults = sortedResults && sortedResults.length > 0 && !isGameOn;
     return (
       <>
       {   
@@ -201,15 +220,18 @@ class SnakeApp extends Component {
                 <Snake snakeBody={snakeBody}/> 
                 <Fruit fruitBody={fruit}/>
               </div>
-              {isGameOn && <div className="pointsText">Вы набрали:  <span className="points">{points}</span></div>}
-              {isGameOn && <div className="pointsText">Ваша скорость:  <span className="points">{points * 7}</span> Км/ч</div>}
-              {!isGameOn && <button className="newGame" onClick={this.startNewGame}>New game</button>}
-              {/*TO DO*/}
-              {!isGameOn && <Results results={sortedResults} /> }
+              {isGameOn && <PlayData points={points} />}
+              {!isGameOn && <button className="newGame" onClick={this.startNewGame}>Новая игра</button>}
+              {canShowResults && <Results results={sortedResults} /> }
             </div>
           :
           // Or show save results form
-           <SaveResultsForm points={points} onChange={this.handleInputOnChange} onClick={this.saveResults} value={inputTextValue} />
+          <SaveResultsForm 
+            points={points} 
+            onChange={this.handleInputOnChange} 
+            onClick={this.saveResults} 
+            value={inputTextValue} 
+          />
       }
       </>
     );

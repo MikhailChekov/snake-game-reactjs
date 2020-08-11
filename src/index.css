@@ -30,7 +30,17 @@ body{
   border-radius: 3px;
 }
 
-.points{
+.playData{
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  margin: 10px auto;
+}
+.playData_text{
+  padding: 10px;
+}
+
+.playData_small{
 	color: red;
 }
 

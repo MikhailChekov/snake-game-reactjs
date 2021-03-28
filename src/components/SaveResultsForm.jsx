@@ -28,7 +28,7 @@ const SaveResultsForm = ({ onChange, onClick, value, points }) => {
                     </label>
                     <input id="playerName" type="text" onChange={onChange} value={value}/>
                 </div>
-                <button onClick={onClick}>Сохранить резьтат</button>
+                <button onClick={onClick}>Сохранить результат</button>
                 <button onClick={document.location.reload}>Отмена</button>
             </form>
         </div>

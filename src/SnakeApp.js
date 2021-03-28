@@ -190,9 +190,11 @@ class SnakeApp extends Component {
   }
 
   saveResults = () => {
-    const { inputTextValue, points, resultsList } = this.state;
+    let { inputTextValue, points, resultsList } = this.state;
+    resultsList = JSON.parse(JSON.stringify(resultsList));
     resultsList.push({player: inputTextValue, score: points });
-    localStorage.setItem('playersList', JSON.stringify(resultsList));
+    const res = JSON.stringify(resultsList);
+    localStorage.setItem('playersList', res);
     this.setState(initialState);
   }
 

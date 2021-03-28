@@ -3,15 +3,13 @@
 import { DEFAULT_PLAYERS } from '../constants';
 
 const getResultsList = () => {
-  let resultsList = null;
-
-  if(!localStorage.getItem('playersList')){
-      resultsList = DEFAULT_PLAYERS;
-  }else{
-      resultsList = JSON.parse(localStorage.getItem('playersList'));
+  let storageList = localStorage.getItem('playersList');
+ 
+  if (!storageList) {
+    return DEFAULT_PLAYERS;
+  } else {
+    return JSON.parse(storageList);
   }
-
-  return resultsList;
 }
 
 export default getResultsList;

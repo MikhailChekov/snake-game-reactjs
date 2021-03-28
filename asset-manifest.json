@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.74f7de1c.chunk.css",
-    "main.js": "/static/js/main.f503aa02.chunk.js",
-    "main.js.map": "/static/js/main.f503aa02.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.b3c05d4c.js",
-    "runtime-main.js.map": "/static/js/runtime-main.b3c05d4c.js.map",
-    "static/js/2.499281a2.chunk.js": "/static/js/2.499281a2.chunk.js",
-    "static/js/2.499281a2.chunk.js.map": "/static/js/2.499281a2.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.0f606a667b4cbf3748ee89dbafd2184c.js": "/precache-manifest.0f606a667b4cbf3748ee89dbafd2184c.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.74f7de1c.chunk.css.map": "/static/css/main.74f7de1c.chunk.css.map",
-    "static/js/2.499281a2.chunk.js.LICENSE.txt": "/static/js/2.499281a2.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/static/media/firework-min.e6b74eac.jpg"
+    "main.css": "/snake-game-reactjs/static/css/main.a022f8f2.chunk.css",
+    "main.js": "/snake-game-reactjs/static/js/main.851f885f.chunk.js",
+    "main.js.map": "/snake-game-reactjs/static/js/main.851f885f.chunk.js.map",
+    "runtime-main.js": "/snake-game-reactjs/static/js/runtime-main.33fd9ff3.js",
+    "runtime-main.js.map": "/snake-game-reactjs/static/js/runtime-main.33fd9ff3.js.map",
+    "static/js/2.499281a2.chunk.js": "/snake-game-reactjs/static/js/2.499281a2.chunk.js",
+    "static/js/2.499281a2.chunk.js.map": "/snake-game-reactjs/static/js/2.499281a2.chunk.js.map",
+    "index.html": "/snake-game-reactjs/index.html",
+    "precache-manifest.6d82844952d093ab384a652fbb07af3b.js": "/snake-game-reactjs/precache-manifest.6d82844952d093ab384a652fbb07af3b.js",
+    "service-worker.js": "/snake-game-reactjs/service-worker.js",
+    "static/css/main.a022f8f2.chunk.css.map": "/snake-game-reactjs/static/css/main.a022f8f2.chunk.css.map",
+    "static/js/2.499281a2.chunk.js.LICENSE.txt": "/snake-game-reactjs/static/js/2.499281a2.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/snake-game-reactjs/static/media/firework-min.e6b74eac.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.b3c05d4c.js",
+    "static/js/runtime-main.33fd9ff3.js",
     "static/js/2.499281a2.chunk.js",
-    "static/css/main.74f7de1c.chunk.css",
-    "static/js/main.f503aa02.chunk.js"
+    "static/css/main.a022f8f2.chunk.css",
+    "static/js/main.851f885f.chunk.js"
   ]
 }
